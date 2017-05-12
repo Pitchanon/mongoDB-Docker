@@ -1,6 +1,7 @@
 # mongoDB-Docker
 MongoDB in a Docker container with Authentication
 
+Docker run
 ```
 $ docker run -it --rm \
 -e MONGODB_ADMIN_USER=admin \
@@ -12,7 +13,7 @@ $ docker run -it --rm \
 -p 27017:27017 --name mongodb_auth pitchanon/mongodb-docker
 ```
 
-Run container in background
+Run container in background and automatically restart the container when it exits
 ```
 $ docker run -it -d \
 -e MONGODB_ADMIN_USER=admin \
@@ -21,7 +22,7 @@ $ docker run -it -d \
 -e MONGODB_APPLICATION_USER=testuser \
 -e MONGODB_APPLICATION_PASS=testpass \
 -v $PWD/mongoData:/data/db \
--p 27017:27017 --name mongodb_auth pitchanon/mongodb-docker
+-p 27017:27017 --name mongodb_auth --restart always pitchanon/mongodb-docker
 ```
 
 ___
